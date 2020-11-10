@@ -12,6 +12,9 @@ list(APPEND CMAKE_PREFIX_PATH $ENV{ROOTSYS})
 #---Locate the ROOT package and defines a number of variables (e.g. ROOT_INCLUDE_DIRS)
 find_package(ROOT REQUIRED COMPONENTS MathCore RIO Hist Tree Net)
 
+LINK_DIRECTORIES(/usr/lib)
+
+
 #---Define useful ROOT functions and macros (e.g. ROOT_GENERATE_DICTIONARY)
 include(${ROOT_USE_FILE})
 
@@ -26,5 +29,6 @@ add_definitions(${ROOT_CXX_FLAGS})
 #---Create  a main program using the library
 add_executable(main main.cpp)
 target_link_libraries(main ${ROOT_LIBRARIES})
+TARGET_LINK_LIBRARIES(main CAENVME)
 #target_link_libraries(Main Event)
 
